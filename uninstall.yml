@@ -1,0 +1,25 @@
+---
+
+# Every single server
+- hosts: all
+  sudo: yes
+  gather_facts: no
+
+  tasks:
+
+  - name: Remove Git
+    apt: name=git state=absent
+
+  - name: Remove nginx
+    apt: name=nginx state=absent
+
+# web
+
+- hosts: web
+  sudo: yes
+  gather_facts: no
+
+  tasks:
+
+  - name: Remove existing web
+    file: path=/vagrant/gdg state=absent
